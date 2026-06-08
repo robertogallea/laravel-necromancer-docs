@@ -409,14 +409,18 @@ php artisan necromancer:diff --base-manifest=snapshots/before.json</pre>
         <div class="flex flex-wrap items-start justify-between gap-3 mb-2">
           <code class="font-mono font-semibold text-sm bg-black text-red-400 px-3 py-1 rounded border border-red-900">necromancer:benchmark</code>
           <div class="flex flex-wrap gap-1.5">
+            <span class="bg-gray-800 text-gray-400 font-mono text-xs rounded px-2 py-0.5">--generate-suite</span>
+            <span class="bg-gray-800 text-gray-400 font-mono text-xs rounded px-2 py-0.5">--suite-output=PATH</span>
             <span class="bg-gray-800 text-gray-400 font-mono text-xs rounded px-2 py-0.5">--no-judge</span>
             <span class="bg-gray-800 text-gray-400 font-mono text-xs rounded px-2 py-0.5">--format=markdown</span>
             <span class="bg-gray-800 text-gray-400 font-mono text-xs rounded px-2 py-0.5">--output=PATH</span>
           </div>
         </div>
-        <p class="text-gray-400 text-sm mb-3">Measures how much Necromancer's generated context improves AI accuracy, hallucination rate, and token cost. Runs a task suite in three conditions — no context, manual <code class="font-mono text-xs bg-gray-800 px-1 py-0.5 rounded text-gray-300">AGENTS.md</code>, and Necromancer-generated <code class="font-mono text-xs bg-gray-800 px-1 py-0.5 rounded text-gray-300">NECROMANCER.md</code> — and reports results side by side.</p>
+        <p class="text-gray-400 text-sm mb-3">Measures how much Necromancer's generated context improves AI accuracy, hallucination rate, and token cost. Runs a task suite in three conditions — no context, manual <code class="font-mono text-xs bg-gray-800 px-1 py-0.5 rounded text-gray-300">AGENTS.md</code>, and Necromancer-generated <code class="font-mono text-xs bg-gray-800 px-1 py-0.5 rounded text-gray-300">NECROMANCER.md</code> — and reports results side by side. Use <code class="font-mono text-xs bg-gray-800 px-1 py-0.5 rounded text-gray-300">--generate-suite</code> to scaffold a grounded task suite from the current manifest before running the benchmark.</p>
         <div class="code-block relative">
           <pre class="bg-black text-gray-300 font-mono text-sm p-4 rounded-lg overflow-x-auto border border-gray-800">php artisan necromancer:benchmark
+php artisan necromancer:benchmark --generate-suite   <span class="text-gray-600"># scaffold tasks from manifest → config/benchmark-tasks.php</span>
+php artisan necromancer:benchmark --generate-suite --suite-output=custom/tasks.php
 php artisan necromancer:benchmark --no-judge        <span class="text-gray-600"># automated checks only</span>
 php artisan necromancer:benchmark --format=markdown --output=benchmark.md</pre>
           <button onclick="copyCode(this)" class="copy-btn absolute top-3 right-3 text-xs bg-gray-700 text-gray-400 hover:bg-gray-600 px-2 py-1 rounded transition-colors">Copy</button>
